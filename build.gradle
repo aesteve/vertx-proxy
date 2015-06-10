@@ -1,0 +1,25 @@
+plugins {
+	id 'java'
+	id 'eclipse'
+	id 'idea'
+	id 'com.github.johnrengelman.shadow' version '1.2.1'
+}
+
+repositories {
+	mavenCentral()
+	maven { url 'http://oss.sonatype.org/content/repositories/snapshots/' }
+}
+
+dependencies {
+    
+	compile 'io.vertx:vertx-core:3.0.0-SNAPSHOT'
+    
+    // tests
+    testCompile 'io.vertx:vertx-unit:3.0.0-SNAPSHOT'
+    testCompile 'junit:junit:4.12'
+    
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.3'
+}
