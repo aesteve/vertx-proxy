@@ -15,7 +15,7 @@ public class TestHttpMethods extends TestBase {
     protected final static String METHOD_HEADER = "X-Original-Method";
 
     @Override
-    protected void createRequestHander() {
+    protected void createRequestHandler() {
         testServer.requestHandler(request -> {
             request.response().putHeader(METHOD_HEADER, request.method().toString());
             request.response().end();

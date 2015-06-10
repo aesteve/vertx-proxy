@@ -23,7 +23,7 @@ public class TestRequestBody extends TestBase {
     private final static String CHARACTERS = "123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     @Override
-    protected void createRequestHander() {
+    protected void createRequestHandler() {
         testServer.requestHandler(request -> {
             HttpServerResponse response = request.response();
             response.setChunked(true);

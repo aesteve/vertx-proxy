@@ -48,7 +48,7 @@ public abstract class TestBase {
             vertx = Vertx.vertx();
         }
         testServer = vertx.createHttpServer(testServerOptions());
-        createRequestHander();
+        createRequestHandler();
         testServer.listen(context.asyncAssertSuccess());
     }
 
@@ -73,5 +73,5 @@ public abstract class TestBase {
         return vertx.createHttpClient(options);
     }
 
-    abstract protected void createRequestHander();
+    abstract protected void createRequestHandler();
 }

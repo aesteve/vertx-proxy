@@ -24,7 +24,7 @@ public class TestHeaders extends TestBase {
      * Note : non-standard headers usually start with "X-"
      */
     @Override
-    protected void createRequestHander() {
+    protected void createRequestHandler() {
         testServer.requestHandler(request -> {
             JsonObject headers = new JsonObject();
             request.headers().forEach(header -> {
