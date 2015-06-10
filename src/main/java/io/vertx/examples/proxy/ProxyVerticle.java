@@ -21,12 +21,7 @@ public class ProxyVerticle extends AbstractVerticle {
     @Override
     public void start(Future<Void> future) {
         log.info("Starting proxy");
-        try {
-            createServerOptions();
-        } catch (Throwable t) {
-            future.fail(t);
-            return;
-        }
+        createServerOptions();
         server = vertx.createHttpServer(options);
         ProxyHandler proxy;
         try {
