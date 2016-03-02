@@ -1,16 +1,17 @@
 package io.vertx.examples.proxy;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
 import io.vertx.core.http.HttpClientRequest;
-import static io.vertx.core.http.HttpHeaders.*;
-import static org.junit.Assert.*;
 import io.vertx.core.json.JsonObject;
-import static io.vertx.examples.proxy.util.ProxyHeaders.*;
 import io.vertx.ext.unit.Async;
 import io.vertx.ext.unit.TestContext;
 import io.vertx.ext.unit.junit.VertxUnitRunner;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import static io.vertx.core.http.HttpHeaders.HOST;
+import static io.vertx.examples.proxy.util.ProxyHeaders.X_FORWARDED_FOR;
+import static io.vertx.examples.proxy.util.ProxyHeaders.X_FORWARDED_HOST;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(VertxUnitRunner.class)
 public class TestHeaders extends TestBase {

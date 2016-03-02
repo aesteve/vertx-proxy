@@ -1,17 +1,14 @@
 package io.vertx.examples.proxy.handler;
 
+import io.vertx.core.Vertx;
+import io.vertx.core.http.*;
+import io.vertx.core.json.JsonObject;
+import io.vertx.core.streams.Pump;
+
 import static io.vertx.core.http.HttpHeaders.CONTENT_LENGTH;
 import static io.vertx.core.http.HttpHeaders.HOST;
 import static io.vertx.examples.proxy.util.ProxyHeaders.X_FORWARDED_FOR;
 import static io.vertx.examples.proxy.util.ProxyHeaders.X_FORWARDED_HOST;
-import io.vertx.core.Vertx;
-import io.vertx.core.http.HttpClient;
-import io.vertx.core.http.HttpClientOptions;
-import io.vertx.core.http.HttpClientRequest;
-import io.vertx.core.http.HttpServerRequest;
-import io.vertx.core.http.HttpServerResponse;
-import io.vertx.core.json.JsonObject;
-import io.vertx.core.streams.Pump;
 
 public class ProxyHandler {
 
@@ -79,8 +76,8 @@ public class ProxyHandler {
                 outgoingRequest.putHeader(header.getKey(), header.getValue());
             }
         });
-        outgoingRequest.putHeader(X_FORWARDED_FOR.toString(), incomingRequest.remoteAddress().host());
-        outgoingRequest.putHeader(X_FORWARDED_HOST.toString(), incomingRequest.getHeader(HOST.toString()));
+        outgoingRequest.putHeader(X_FORWARDED_FOR, incomingRequest.remoteAddress().host());
+        outgoingRequest.putHeader(X_FORWARDED_HOST, incomingRequest.getHeader(HOST.toString()));
         // README : add custom headers here if you need to
         Pump.pump(incomingRequest, outgoingRequest).start();
         incomingRequest.endHandler(voidz -> {
