@@ -47,7 +47,7 @@ public class TestRequestBody extends TestBase {
             });
         });
         request.setChunked(true);
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 1000; i++) {
             String randomString = randomString(10000);
             request.write(randomString);
             sentContent.append(randomString);
