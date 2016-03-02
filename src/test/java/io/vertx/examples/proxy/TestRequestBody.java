@@ -29,9 +29,7 @@ public class TestRequestBody extends TestBase {
             response.setChunked(true);
             response.setStatusCode(200);
             Pump.pump(request, response).start();
-            request.endHandler(voidz -> {
-                response.end();
-            });
+            request.endHandler(voidz -> response.end());
         });
     }
 
@@ -42,11 +40,9 @@ public class TestRequestBody extends TestBase {
         HttpClientRequest request = client().post("/test", response -> {
             assertEquals(200, response.statusCode());
             Buffer buff = Buffer.buffer();
-            response.handler(bufferPart -> {
-                buff.appendBuffer(bufferPart);
-            });
+            response.handler(buff::appendBuffer);
             response.endHandler(voidz -> {
-                assertEquals(sentContent.toString(), buff.toString("UTF-8"));
+                assertEquals(buff.toString("UTF-8"), sentContent.toString());
                 async.complete();
             });
         });

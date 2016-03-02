@@ -6,19 +6,18 @@ plugins {
 
 repositories {
 	mavenCentral()
-	maven { url 'http://oss.sonatype.org/content/repositories/snapshots/' }
 }
 
 dependencies {
     
-	compile 'io.vertx:vertx-core:3.0.0-SNAPSHOT'
+	compile "io.vertx:vertx-core:$vertxVersion"
     
     // tests
-    testCompile 'io.vertx:vertx-unit:3.0.0-SNAPSHOT'
+    testCompile "io.vertx:vertx-unit:$vertxVersion"
     testCompile 'junit:junit:4.12'
     
 }
 
 task wrapper(type: Wrapper) {
-	gradleVersion = '2.4'
+	gradleVersion = '2.11'
 }
